@@ -1,24 +1,29 @@
 
-import java.util.Scanner;
-
-public class Main {
-
 
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        book myBook = new book("How To Scam People Online", "Jollibee", 10, true);
-
+        book myBook = new book("'How To Scam People Online", "Jollibee", 10, true);
+        book myBook2 = new book("How To Cook ", "Mang Juan", 10, true);
+        book myBook3 = new book("how to make 1 million in 1 day", "scemmer joe", 10, false);
         myBook.displayInfo();
         myBook.borrowbook();
 
+        System.out.println("");
 
+        myBook2.displayInfo();
+        myBook2.borrowbook();
+        System.out.println("");
+        myBook3.displayInfo();
+        myBook3.borrowbook();
         }
 
 
 
     }
+
+
 
 ========================================== Main Class
 
