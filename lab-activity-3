@@ -1,0 +1,64 @@
+
+import java.util.Scanner;
+
+public class Main {
+
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        book myBook = new book("How To Scam People Online", "Jollibee", 10, true);
+
+        myBook.displayInfo();
+        myBook.borrowbook();
+
+
+        }
+
+
+
+    }
+
+========================================== Main Class
+
+
+
+========================================== class 
+public class book {
+    String title = "How To Scam People Online";
+    String author = "Jollibee";
+    int pages = 10;
+    boolean isAvailable;
+
+
+    public book(String title, String author, int pages, boolean isAvailable) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isAvailable = isAvailable;
+        return;
+    }
+
+
+    public void displayInfo() {
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author);
+        System.out.println("Pages: " + pages);
+        System.out.println("Available: " + (isAvailable ? "Yes" : "No"));
+
+
+  }
+
+  public void borrowbook() {
+    if(isAvailable = true) {
+        System.out.println("book is available");
+    }else{
+        System.out.println("book is not available");
+return;
+    }
+
+
+    }
+}
+
