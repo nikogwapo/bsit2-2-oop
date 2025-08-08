@@ -1,0 +1,102 @@
+import java.util.Scanner;
+public class Main {
+
+
+    public static void main(String[] args) {
+        student student1 = new student("Yoshi", 18, "BSIT", 85.0 ,90.0 , 88.0);
+        student student2 = new student("Mayo",19, "BSCS", 92.0 ,95.0 , 89.0);
+        student student3 = new student("neqr", 21, "BSIT", 65.0 ,70.0 , 68.0);
+
+
+    student1.displayInfo();
+    student1.calculateAverage();
+    student1.getLetterGrade();
+    student1.isPassing();
+        System.out.println(" ");
+        student2.displayInfo();
+        student2.calculateAverage();
+        student2.getLetterGrade();
+        student2.isPassing();
+        System.out.println(" ");
+        student3.displayInfo();
+        student3.calculateAverage();
+        student3.getLetterGrade();
+        student3.isPassing();
+
+        System.out.println(" ");
+        System.out.println("Summary: 2 out of 3 Student are passing.");
+    }
+}
+========================================================================================================= Java Main
+
+
+======================================================================================================== java class
+public class student{
+String name ="";
+int age =0;
+String course = "";
+double grade1 = 0.0;
+double grade2 = 0.0;
+double grade3 = 0.0;
+
+
+    public student(String name, int age, String course, double grade1, double grade2, double grade3) {
+        this.name = name;
+        this.age = age;
+        this.course = course;
+        this.grade1 = grade1;
+        this.grade2 = grade2;
+        this.grade3 = grade3;
+        return;
+    }
+
+
+    public void displayInfo() {
+
+        System.out.println("Name: " + name);
+        System.out.println("age: " + age);
+        System.out.println("Course: " + course);
+        System.out.println("Grades: " + grade1 +","+ grade2 + "," + grade3);
+
+
+
+
+    }
+    public void calculateAverage() {
+        double total = grade1 * grade2 / grade3;
+        System.out.println("Average Score: " + total);
+
+    }
+   public void getLetterGrade() {
+       double total = grade1 * grade2 / grade3;
+
+       if (total >= 90) {
+           System.out.println("Letter Grade: A");
+       } else if (total >= 80) {
+           System.out.println("Letter Grade: B");
+       } else if (total >= 70) {
+           System.out.println("Letter Grade: C");
+       } else if (total >= 60) {
+           System.out.println("Letter Grade: D");
+       } else {
+           System.out.println("letter Grade: F");
+
+
+           return;
+
+       }
+   }
+   public void isPassing() {
+       double grade = grade1 * grade2 / grade3;
+
+   if (grade >= 75) {
+       System.out.println("STATUS: PASS");
+   }else{
+       System.out.println("STATUS: FAILED");
+       return;
+   }
+
+       }
+   }
+
+
