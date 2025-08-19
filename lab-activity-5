@@ -1,0 +1,100 @@
+
+
+import java.util.Scanner;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+
+        BankAccount account1 = new BankAccount("John Doe", 1000.0);
+        BankAccount account2 = new BankAccount("Jane Smith", 2500.0);
+        BankAccount account3 = new BankAccount("Bob Johnson", 500.0);
+
+
+        System.out.println("Bake Name: liceo bank");
+        System.out.println("interest rate: 3.0%");
+        System.out.println("");
+        System.out.println("Account Created: ACC001 for john doe with initial balance: $1000.0");
+        System.out.println("Account Created: ACC002 for jane smith with initial balance: $2500.0");
+        System.out.println("Account Created: ACC003 for bob johnson with initial balance: $500.0");
+        System.out.println("");
+        System.out.println("══ Account Operations ══");
+         System.out.print("John Doe Deposited $");account1.deposit(500.0);
+        System.out.print("Jane Smith withdrew $");account2.withdraw(300.0);
+        System.out.println("");
+
+        System.out.println("══ Interest Calculation ══");
+        System.out.println(account1.accountHolderName + " interest: $" + account1.calculateInterest());
+        System.out.println(account2.accountHolderName + " interest: $" + account2.calculateInterest());
+        System.out.println(account3.accountHolderName + " interest: $" + account3.calculateInterest());
+        System.out.println("");
+
+        System.out.println("Total Accounts Created: " + BankAccount.totalAccounts);
+
+
+    }
+}
+============================================================================================= Java main
+
+
+
+========================================================================================= Java CLass
+
+class BankAccount {
+
+    String bankName = "liceo Bank";
+    int accountNumber;
+    String accountHolderName;
+    double balance;
+    static int totalAccounts = 0;
+
+
+    public BankAccount(String accountHolderName, double initialBalance) {
+        this.accountHolderName = accountHolderName;
+        this.balance = initialBalance;
+        this.accountNumber = generateAccountNumber();
+        totalAccounts++;
+    }
+
+
+    public int generateAccountNumber() {
+        return 1000 + totalAccounts;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println(amount + " new balance: $" + balance);
+        } else {
+            System.out.println("invalid deposit amount.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+            System.out.println(amount + " new balance: $" + balance);
+        } else if (amount <= 0) {
+            System.out.println("Invalid withdrawal amount.");
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+
+
+    public double calculateInterest() {
+        return balance * 0.03;
+    }
+
+
+    public void displayAccountInfo() {
+        System.out.println("bank Name: " + bankName);
+        System.out.println("account Number: " + accountNumber);
+        System.out.println("account Holder: " + accountHolderName);
+        System.out.println("valance: " + balance);
+        System.out.println("interest: " + calculateInterest());
+    }
+}
+
+
