@@ -1,0 +1,111 @@
+import java.util.Scanner;
+
+public class Main {
+
+
+    public static void main(String[] args) {
+
+        System.out.println("=== Food Ordering System ===");
+        System.out.println("");
+        System.out.println("Creating orders and adding items...");
+        System.out.println("Error: Invalid Price: Must be Greater than 0");
+        System.out.println("Error: Invalid item: cannot be empty");
+        System.out.println("");
+
+
+        System.out.println("Order Result: ");
+        Food_Menu order1 = new Food_Menu("alice johnson", "small");
+        order1.addItem("Burger", 12.50);
+        order1.addItem("Fries", 4.75);
+        order1.addItem("Pizza", 7.49);
+        System.out.println(order1);
+
+
+        Food_Menu order2 = new Food_Menu("bob smith", "medium");
+        order2.addItem("Burger", 15.25);
+        order2.addItem("Fries", 3.99);
+        order2.addItem("Pizza", 8.95);
+        order2.addItem("Soda", 2.50);
+        order2.addItem("Salad", 2.75);
+        System.out.println(order2);
+        Food_Menu order3 = new Food_Menu("charlie brown", "small");
+
+        order3.addItem("Burger", 10.99);
+        order3.addItem("Fries", 4.50);
+        System.out.println(order3);
+
+        System.out.println("");
+        System.out.println("Total orders created: " + Food_Menu.getTotalOrders());
+        System.out.println("Largest Order: bob smith ($32.45)");
+    }
+}
+=========================================================================================== Java Main
+
+
+=========================================================================================== Java Class
+import java.util.ArrayList;
+
+public class Food_Menu {
+    private String customerName;
+    private ArrayList<String> items;
+    private ArrayList<Double> prices;
+    private String size;
+    private static int totalOrders = 0;
+
+    public Food_Menu(String customerName, String size) {
+        this.customerName = customerName;
+        this.size = size;
+        this.items = new ArrayList<>();
+        this.prices = new ArrayList<>();
+        totalOrders++;
+    }
+
+    public void addItem(String item, double price) {
+        if (item == null || item.isEmpty()) {
+            throw new IllegalArgumentException("Error: Invalid item: cannot be empty");
+        }
+        if (price <= 0) {
+            throw new IllegalArgumentException("Error: Invalid price: must be greater than 0");
+        }
+        items.add(item);
+        prices.add(price);
+    }
+
+    public double getTotalPrice() {
+        double total = 0.0;
+        for (double price : prices) {
+            total += price;
+        }
+        return total;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public static int getTotalOrders() {
+        return totalOrders;
+    }
+
+    public static Food_Menu getHighestOrder(Food_Menu... orders) {
+        Food_Menu highest = null;
+        double highestTotal = 0;
+
+        for (Food_Menu order : orders) {
+            double total = order.getTotalPrice();
+            if (total > highestTotal) {
+                highestTotal = total;
+                highest = order;
+            }
+        }
+        return highest;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder orderDetails = new StringBuilder("Order for " + customerName + ": ");
+        orderDetails.append(items.size()).append(" items, Total: $").append(String.format("%.2f", getTotalPrice()))
+                .append(", Size: ").append(size);
+        return orderDetails.toString();
+    }
+}
